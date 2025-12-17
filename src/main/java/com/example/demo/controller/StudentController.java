@@ -13,5 +13,9 @@ public class Studctl{
     public Studentity addStudent(@RequestBody Studentity st){
         return ser.saveData(st);
     }
-    @GetMappun
+    @GetMapping("/gettall"){
+        public Collection<Studentity>getAllStudents(){
+            return ser.getAll()
+        }
+    }
 }
