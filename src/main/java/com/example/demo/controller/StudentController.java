@@ -13,11 +13,18 @@ public class Studctl{
     public Studentity addStudent(@RequestBody Studentity st){
         return ser.saveData(st);
     }
-    @GetMapping("/gettall"){
+    @GetMapping("/gettall")
         public Collection<Studentity>getAllStudents(){
             return ser.getAll();
         }
-        @GetMapping("/update/{id}")
-        pub
+        @GetMapping("/get/{id}")
+        public Studentity getStudentById(@PathVariable int id){
+            return ser.getById(id);
+        }
+        @PutMapping("/update/{id}")
+        public Studentity updateStudent(
+            @PathVariable int id;
+            @RequestBody Studentity updateStudent){
+                return ser.update(id,st);
+            }
     }
-}
