@@ -6,7 +6,7 @@ import com.example.demo.entity.Student;
 import com.example.demo.service.StudentServices;
 @RestConroller
 @RequestMapping("/student")
-public class Studctl{
+public class StudController{
     @Autowired
     private Studservices ser;
     @PostMapping("/add")
@@ -23,7 +23,7 @@ public class Studctl{
         }
         @PutMapping("/update/{id}")
         public Studentity updateStudent(
-            @PathVariable int id;
+            @PathVariable int id,
             @RequestBody Studentity updateStudent){
                 return ser.update(id,st);
             }
