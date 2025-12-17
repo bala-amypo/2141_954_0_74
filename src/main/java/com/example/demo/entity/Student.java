@@ -1,17 +1,24 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import java.time.LocalDate;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 
 @Entity
-@Table(name = "student")
-public class Student {
 
-    @Id
+public class Student {
+@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-    private String dept;
+    private String email;
+    private LocalDate dob;
+    private Float cgpa;
+
 
     public Long getId() {
         return id;
@@ -29,11 +36,38 @@ public class Student {
         this.name = name;
     }
 
-    public String getDept() {
-        return dept;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDept(String dept) {
-        this.dept = dept;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public Float getCgpa() {
+        return cgpa;
+    }
+
+    public void setCgpa(Float cgpa) {
+        this.cgpa = cgpa;
+    }
+    public Student(Float cgpa, LocalDate dob, String email, Long id, String name) {
+        this.cgpa = cgpa;
+        this.dob = dob;
+        this.email = email;
+        this.id = id;
+        this.name = name;
+    }
+    
+    public Student() {
+    }
+
 }
