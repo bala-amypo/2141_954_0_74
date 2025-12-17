@@ -15,25 +15,21 @@ public class StudentController {
     @Autowired
     private StudentService service;
 
-    // ADD STUDENT
     @PostMapping("/add")
     public Student addStudent(@RequestBody Student student) {
         return service.saveData(student);
     }
 
-    // GET ALL STUDENTS
     @GetMapping("/getall")
     public Collection<Student> getAllStudents() {
         return service.getAll();
     }
 
-    // GET STUDENT BY ID
     @GetMapping("/get/{id}")
     public Student getStudentById(@PathVariable Long id) {
         return service.getById(id);
     }
 
-    // UPDATE STUDENT
     @PutMapping("/update/{id}")
     public Student updateStudent(
             @PathVariable Long id,
