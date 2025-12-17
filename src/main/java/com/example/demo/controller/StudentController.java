@@ -15,7 +15,9 @@ public class Studctl{
     }
     @GetMapping("/gettall"){
         public Collection<Studentity>getAllStudents(){
-            return ser.getAll()
+            return ser.getAll();
         }
+        @GetMapping("/update/{id}")
+        pub
     }
 }
