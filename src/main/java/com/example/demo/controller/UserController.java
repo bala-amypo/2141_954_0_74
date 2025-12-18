@@ -1,28 +1,38 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.Userentity;
-import com.example.demo.service.UserService;
+import com.example.demo.entity.Student;
+import com.example.demo.service.StudentService;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/student")
+public class StudentController {
 
-    private final UserService userService;
+    @Autowired
+    private StudentService service;
 
-    // ✅ Constructor Injection
-    public UserController(UserService userService) {
-        this.userService = userService;
+    @PostMapping("/add")
+    public Student addStudent(@RequestBody Student student) {
+        return service.saveData(student);
     }
 
-    @PostMapping("/register")
-    public Userentity registerUser(@RequestBody Userentity user) {
-        return userService.register(user);
+    @GetMapping("/getall")
+    public List<Student> getAllStudents() {
+        return service.getAll();
     }
 
-    @GetMapping("/email/{email}")
-    public Userentity getByEmail(@PathVariable String email) {
-        return userService.findByEmail(email);
+    @GetMapping("/get/{id}")
+    public Student getStudentById(@PathVariable Long id) {
+        return service.getById(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public Student updateStudent(@PathVariable Long id,
+                                 @RequestBody Student student) {
+        return service.update(id, student);
     }
 }

@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Userentity;
+import java.util.List;
+import com.example.demo.entity.Student;
 
-public interface UserService {
+public interface StudentService {
 
-    Userentity register(Userentity user);
-
-    Userentity findByEmail(String email);
+    Student saveData(Student student);
+    List<Student> getAll();
+    Student getById(Long id);
+    Student update(Long id, Student student);
 }

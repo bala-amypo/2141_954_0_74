@@ -1,43 +1,38 @@
 package com.example.demo.service.Impl;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.Userentity;
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.repository.UserRepo;
-import com.example.demo.service.UserService;
+import com.example.demo.entity.Student;
+import com.example.demo.repository.StudentRepo;
+import com.example.demo.service.StudentService;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class StudentServiceImpl implements StudentService {
 
-    private final UserRepo userRepo;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private StudentRepo repo;
 
-    // ✅ Constructor Injection (IMPORTANT)
-    public UserServiceImpl(UserRepo userRepo, PasswordEncoder passwordEncoder) {
-        this.userRepo = userRepo;
-        this.passwordEncoder = passwordEncoder;
+    @Override
+    public Student saveData(Student student) {
+        return repo.save(student);
     }
 
     @Override
-    public Userentity register(Userentity user) {
-
-        // Encrypt password
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-        // Default role
-        if (user.getRole() == null || user.getRole().isEmpty()) {
-            user.setRole("USER");
-        }
-
-        return userRepo.save(user);
+    public List<Student> getAll() {
+        return repo.findAll();
     }
 
     @Override
-    public Userentity findByEmail(String email) {
-        return userRepo.findByEmail(email)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("User not found"));
+    public Student getById(Long id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    @Override
+    public Student update(Long id, Student student) {
+        student.setId(id);
+        return repo.save(student);
     }
 }
