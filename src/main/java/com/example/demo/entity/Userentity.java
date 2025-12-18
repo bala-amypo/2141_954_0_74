@@ -3,14 +3,14 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Student {
+public class Userentity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String dept;
+    private String email;
 
     public Long getId() {
         return id;
@@ -28,11 +28,11 @@ public class Student {
         this.name = name;
     }
 
-    public String getDept() {
-        return dept;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDept(String dept) {
-        this.dept = dept;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

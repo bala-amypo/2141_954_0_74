@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.User;
+import com.example.demo.entity.Userentity;
 import com.example.demo.service.UserService;
 
 @RestController
@@ -16,23 +16,23 @@ public class UserController {
     private UserService service;
 
     @PostMapping("/add")
-    public User addUser(@RequestBody User user) {
+    public Userentity addUser(@RequestBody Userentity user) {
         return service.saveUser(user);
     }
 
     @GetMapping("/getall")
-    public List<User> getAllUsers() {
+    public List<Userentity> getAllUsers() {
         return service.getAllUsers();
     }
 
     @GetMapping("/get/{id}")
-    public User getUserById(@PathVariable Long id) {
+    public Userentity getUserById(@PathVariable Long id) {
         return service.getUserById(id);
     }
 
     @PutMapping("/update/{id}")
-    public User updateUser(@PathVariable Long id,
-                           @RequestBody User user) {
+    public Userentity updateUser(@PathVariable Long id,
+                                 @RequestBody Userentity user) {
         return service.updateUser(id, user);
     }
 }
