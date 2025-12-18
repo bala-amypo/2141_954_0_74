@@ -5,34 +5,34 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.Student;
-import com.example.demo.service.StudentService;
+import com.example.demo.entity.User;
+import com.example.demo.service.UserService;
 
 @RestController
-@RequestMapping("/student")
-public class StudentController {
+@RequestMapping("/user")
+public class UserController {
 
     @Autowired
-    private StudentService service;
+    private UserService service;
 
     @PostMapping("/add")
-    public Student addStudent(@RequestBody Student student) {
-        return service.saveData(student);
+    public User addUser(@RequestBody User user) {
+        return service.saveUser(user);
     }
 
     @GetMapping("/getall")
-    public List<Student> getAllStudents() {
-        return service.getAll();
+    public List<User> getAllUsers() {
+        return service.getAllUsers();
     }
 
     @GetMapping("/get/{id}")
-    public Student getStudentById(@PathVariable Long id) {
-        return service.getById(id);
+    public User getUserById(@PathVariable Long id) {
+        return service.getUserById(id);
     }
 
     @PutMapping("/update/{id}")
-    public Student updateStudent(@PathVariable Long id,
-                                 @RequestBody Student student) {
-        return service.update(id, student);
+    public User updateUser(@PathVariable Long id,
+                           @RequestBody User user) {
+        return service.updateUser(id, user);
     }
 }
